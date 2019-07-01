@@ -14,7 +14,7 @@ heart_beat_amp = 500 #amplitude of the heart beat in counts
 breath_amp = 50 #amplitude of breaths in counts
 beats_per_sec = 1
 breaths_per_sec =.2
-noise_coefficient = 248
+noise_coefficient = 248 #This is less sensitive i.e. Need higher numbers to introduce more noise. 
 
 def vital_array(my_array,Hz,amplitude,): #This function simply makes a sinusoidal data set given vitals (biological vitals)
     new_array = amplitude*2*np.sin(my_array*2*Hz*np.pi) + 2.5*amplitude
@@ -23,7 +23,7 @@ def vital_array(my_array,Hz,amplitude,): #This function simply makes a sinusoida
 #creation of the different signals 
 heartbeat = vital_array(time,beats_per_sec,heart_beat_amp)
 breathing = vital_array(time,breaths_per_sec,breath_amp)
-noise_random = np.random.uniform(-1,1,len(time)) * noise_coefficient
+noise_random = np.random.uniform(-1,1,len(time)) * noise_coefficient 
 
 glucose_concentration = ((-1*(time-2000)**2)*.000018)+145 #creates a data set for glucose rising and falling during 4000 seconds
 
